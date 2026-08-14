@@ -1,0 +1,59 @@
+[message_types.TEXT]
+action = "AI_WORKFLOW"
+
+[message_types.IMAGE]
+action = "HEART_REACTION_ONLY"
+
+[message_types.VIDEO]
+action = "HEART_REACTION_ONLY"
+
+[message_types.VOICE]
+action = "HEART_REACTION_ONLY"
+
+[message_types.LINK]
+action = "HEART_REACTION_ONLY"
+
+[message_types.STICKER]
+action = "HEART_REACTION_ONLY"
+
+[message_types.GIF]
+action = "HEART_REACTION_ONLY"
+
+[message_types.EMOJI_ONLY]
+action = "HEART_REACTION_ONLY"
+
+[message_types.VIEW_ONCE]
+action = "HEART_REACTION_ONLY"
+
+[message_types.UNKNOWN_MEDIA]
+action = "HEART_REACTION_ONLY"
+
+
+[intents.NORMAL]
+action = "AUTO_REPLY"
+
+[intents.RELATIONSHIP]
+action = "AUTO_REPLY"
+
+[intents.MONEY]
+action = "OWNER_REQUIRED"
+
+[intents.APPOINTMENT]
+action = "OWNER_REQUIRED"
+
+[intents.DECISION]
+action = "OWNER_REQUIRED"
+
+
+[relationship]
+positive = true
+affectionate = true
+reassuring = true
+avoid_strong_claim_without_context = true
+
+
+[media]
+reaction = "❤️"
+send_text_reply = false
+send_emoji_message = false
+analyze_content = false

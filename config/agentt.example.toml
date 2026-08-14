@@ -1,0 +1,34 @@
+[agent]
+name = "chatWithWife"
+default_mode = "AUTO"
+
+[conversation]
+message_buffer_seconds = 4
+manual_timeout_minutes = 20
+target_only = true
+
+[similarity]
+strong_threshold = 0.85
+reference_threshold = 0.70
+max_examples = 5
+per_category_calibration = true
+
+[llm]
+provider = "lm_studio"
+base_url = "http://localhost:1234/v1"
+model = "qwen3.5-9b"
+
+[reply_delay]
+enabled = true
+very_short_min = 2
+very_short_max = 4
+short_min = 3
+short_max = 6
+medium_min = 5
+medium_max = 9
+
+[history]
+days_to_import = 365
+
+[privacy]
+local_only = true

@@ -1,0 +1,33 @@
+
+{
+  "participants": [
+    {
+      "name": "Minh"
+    },
+    {
+      "name": "Girlfriend"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "Girlfriend",
+      "timestamp_ms": 3000,
+      "photos": [
+        {
+          "uri": "photos/photo_001.jpg"
+        }
+      ]
+    },
+    {
+      "sender_name": "Minh",
+      "timestamp_ms": 2000,
+      "content": "chưa :))"
+    },
+    {
+      "sender_name": "Girlfriend",
+      "timestamp_ms": 1000,
+      "content": "ăn chưa"
+    }
+  ],
+  "title": "Girlfriend"
+}
