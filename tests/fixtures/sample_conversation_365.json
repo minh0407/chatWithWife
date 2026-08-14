@@ -1,0 +1,28 @@
+{
+  "participants": [
+    {
+      "name": "Minh"
+    },
+    {
+      "name": "Girlfriend"
+    }
+  ],
+  "messages": [
+    {
+      "sender_name": "Girlfriend",
+      "timestamp_ms": 34560000000,
+      "content": "tin mới nhất"
+    },
+    {
+      "sender_name": "Minh",
+      "timestamp_ms": 8640000000,
+      "content": "tin cách đây 300 ngày"
+    },
+    {
+      "sender_name": "Girlfriend",
+      "timestamp_ms": 0,
+      "content": "tin cách đây 400 ngày"
+    }
+  ],
+  "title": "Girlfriend"
+}

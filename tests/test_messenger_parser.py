@@ -7,7 +7,7 @@ def test_parse_messenger_json():
 
     parser = MessengerParser(
         owner_name="Minh",
-        target_name="Girlfriend"
+     
     )
 
     messages = parser.parse(
@@ -15,6 +15,7 @@ def test_parse_messenger_json():
     )
 
     assert len(messages) == 3
+    assert parser.target_name == "Girlfriend"
 
     # Message đầu tiên
     assert messages[0].timestamp_ms == 1000
@@ -32,3 +33,19 @@ def test_parse_messenger_json():
     assert messages[2].timestamp_ms == 3000
     assert messages[2].source == MessageSource.TARGET
     assert messages[2].message_type == MessageType.IMAGE
+
+def test_filter_last_365_days():
+
+    parser = MessengerParser(
+        owner_name="Minh",
+        days_to_import=365
+    )
+
+    messages = parser.parse(
+        "tests/fixtures/sample_conversation_365.json"
+    )
+
+    assert len(messages) == 2
+
+    assert messages[0].text == "tin cách đây 300 ngày"
+    assert messages[1].text == "tin mới nhất"
