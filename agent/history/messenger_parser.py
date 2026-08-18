@@ -17,9 +17,14 @@ class MessengerParser:
         names = []
 
         for participant in participants:
-            name = participant.get("name")
-            if name:
-                names.append(name)
+           if isinstance(participant,str):
+            name = participant.strip()
+
+            if name: names.append(name)
+
+           elif isinstance(participant,dict):
+               name = participant.get("name") 
+               if name: names.append(name)   
 
         return names
 
@@ -68,18 +73,28 @@ class MessengerParser:
         messages = []
 
         for index, raw_message in enumerate(raw_messages):
-            sender_name = raw_message.get("sender_name")
-            timestamp_ms = raw_message.get("timestamp_ms",0)
-            source = self._detect_source(sender_name)
-            message_type = MessageTypeDetector.detect(raw_message)
-            text = raw_message.get("content", None)
+            sender_name = (raw_message.get("sender_name") or raw_message.get("senderName"))
+            timestamp_ms = raw_message.get("timestamp_ms")
+            if timestamp_ms is None:
+                 timestamp_ms = raw_message.get("timestamp")
+           
+            normalized_message = raw_message.copy()
+
+            text = raw_message.get("content")
+            if text is None:
+                text = raw_message.get("text")
+            if text is not None:
+                normalized_message["content"] = text
+            message_type = MessageTypeDetector.detect(normalized_message)
+            
+        
 
             if not sender_name or not timestamp_ms:
                 continue
 
             source = self._detect_source(sender_name)
-            message_type = MessageTypeDetector.detect(raw_message)
-            text = raw_message.get("content", None)
+            
+            
             
             message = Message(
                 message_id=f"msg_{timestamp_ms}_{index}",

@@ -43,7 +43,17 @@ class MessageTypeDetector:
         if raw_message.get("gifs"):
             return MessageType.GIF
 
-        text = raw_message.get("content")
+
+        raw_type = raw_message.get("type","")
+        if isinstance(raw_type,str):
+            raw_type = raw_type.lower()
+
+            if raw_type =="link":
+                return MessageType.LINK
+            if raw_type =="media":
+                return MessageType.UNKNOWN_MEDIA
+
+        text = (raw_message.get("content") or raw_message.get("text"))
 
         if isinstance(text, str):
 

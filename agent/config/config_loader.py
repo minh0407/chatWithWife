@@ -5,7 +5,7 @@ class ConfigLoader:
     def __init__(self, config_path: str):
         self.config_path = Path(config_path)
 
-    def load_(self) -> dict:
+    def load(self) -> dict:
         if not self.config_path.exists():
             raise FileNotFoundError(f"Config file not found: {self.config_path}")
 

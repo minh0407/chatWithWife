@@ -44,3 +44,32 @@ def test_emoji_only():
     }
 
     assert MessageTypeDetector.detect(message) == MessageType.EMOJI_ONLY
+
+def test_real_export_link():
+
+    message = {
+        "type": "link",
+        "text": "một link facebook"
+    }
+
+    assert (
+        MessageTypeDetector.detect(message)
+        == MessageType.LINK
+    )
+
+
+def test_real_export_unknown_media():
+
+    message = {
+        "type": "media",
+        "media": [
+            {
+                "uri": "123456789"
+            }
+        ]
+    }
+
+    assert (
+        MessageTypeDetector.detect(message)
+        == MessageType.UNKNOWN_MEDIA
+    )    
